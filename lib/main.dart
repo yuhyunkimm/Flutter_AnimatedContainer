@@ -24,45 +24,18 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  Size size = Size(0, 0);
-  bool isOpen = false;
 
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
-    print("size width : ${size.width}");
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          InkWell(
-            child: Icon(Icons.menu),
-            onTap: () {
-              setState(() {
-                isOpen = !isOpen;
-              });
-            },
-          ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          Center(
-            child: Text("Animation Screen"),
-          ),
-          AnimatedContainer(
-            curve: Curves.easeInOutBack, // esseInOut
-            duration: Duration(seconds: 2),
-            height: double.infinity,
-            width: size.width * (2 / 3),
-            color: Colors.blue,
-            transform: Matrix4.translationValues(isOpen ? size.width *(2/3) : size.width, 0, 0),
-          ),
-        ],
+      appBar: AppBar(),
+      drawer: Drawer(
+        child: Container(
+          width: 200,
+          height: double.infinity,
+          color: Colors.blue,
+        ),
       ),
     );
   }
